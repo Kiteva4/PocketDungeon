@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2613e74327c1b444ae70b68b7fc4d03, type: 3}
+  m_Name: 2_Faceguard
+  m_EditorClassIdentifier: 
+  costCurve: {fileID: 11400000, guid: c4fff2840b45eec4db61f0467bec7c91, type: 2}
+  bonusCurve: {fileID: 11400000, guid: 1cb505722772ad242a73209ed74f6ae5, type: 2}
+  itemIcon: {fileID: 21300000, guid: 6524ed1980d53f54c9b7a4e4b3996a86, type: 3}
+  itemRarity: 5
+  itemName: Faceguard
+  _itemLevel: 1
+  baseUpgradeCost: 1
+  baseBonusHP: 1
+  baseBonusPhysicalDmg: 1
+  haveFireDmg: 1
+  baseBonusFireDmg: 1
+  haveWaterDmg: 1
+  baseBonusWaterDmg: 1
+  gameGold: {fileID: 11400000, guid: 90f9be530f0d15342962d24b6236e843, type: 2}
