@@ -1,11 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 
 [Serializable]
-public struct SaveData
+public class SaveData
 {
-    public List<InventoryItem> weaponsData;
-    public List<InventoryItem> headsData;
-    public List<InventoryItem> chestData;
-    public List<InventoryItem> legsData;
+    public InventoryData inventoryData = new InventoryData();
+
+    //todo
+    //public SpellProgressData spellProgressData;
+    //public CurrencyData currencyData;
 }

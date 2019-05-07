@@ -168,10 +168,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1f07dd2bf736bd4782824ba90e58e59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inventoryData: {fileID: 11400000, guid: b184a2b1c17444c489150c0a6ae6317e, type: 2}
   equipmentsData: {fileID: 11400000, guid: 19eddacb05d82d744b7723455f498377, type: 2}
   itemHolderPrefab: {fileID: 8088111596218479852, guid: 4d90f13d5df79a445939ed058f9b9785,
     type: 3}
+  itemTypes: 1
 --- !u!1 &82705930
 GameObject:
   m_ObjectHideFlags: 0
@@ -8017,22 +8017,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52cc9b6a480f74b41923edae921d0d4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Chests:
-    allElemetsData: {fileID: 11400000, guid: 19eddacb05d82d744b7723455f498377, type: 2}
-    inventoryElementsData: {fileID: 11400000, guid: b184a2b1c17444c489150c0a6ae6317e,
-      type: 2}
-  Heads:
-    allElemetsData: {fileID: 11400000, guid: 7cf580e856a77ce4da56f996d3fe3726, type: 2}
-    inventoryElementsData: {fileID: 11400000, guid: fbab09d75ab3d0b478124589682083e4,
-      type: 2}
-  Legs:
-    allElemetsData: {fileID: 11400000, guid: 901f083fb2205c243aca3eca6572a3a2, type: 2}
-    inventoryElementsData: {fileID: 11400000, guid: e45bd583e4271b84d9a9fb972a1e2c91,
-      type: 2}
-  Weapons:
-    allElemetsData: {fileID: 11400000, guid: e91a3e870be0cb845b0e4c0f5ae28e88, type: 2}
-    inventoryElementsData: {fileID: 11400000, guid: d69b2eedd405c9842bf20296ac10bfe4,
-      type: 2}
+  allWeaponsData: {fileID: 11400000, guid: e91a3e870be0cb845b0e4c0f5ae28e88, type: 2}
+  allHeadsData: {fileID: 11400000, guid: 7cf580e856a77ce4da56f996d3fe3726, type: 2}
+  allChestsData: {fileID: 11400000, guid: 19eddacb05d82d744b7723455f498377, type: 2}
+  allLegsData: {fileID: 11400000, guid: 901f083fb2205c243aca3eca6572a3a2, type: 2}
 --- !u!114 &786270582
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8045,10 +8033,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b6560c2ff14ccf49b4186b759701858, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponList: {fileID: 11400000, guid: d69b2eedd405c9842bf20296ac10bfe4, type: 2}
-  headList: {fileID: 11400000, guid: fbab09d75ab3d0b478124589682083e4, type: 2}
-  chestList: {fileID: 11400000, guid: b184a2b1c17444c489150c0a6ae6317e, type: 2}
-  legsList: {fileID: 11400000, guid: e45bd583e4271b84d9a9fb972a1e2c91, type: 2}
 --- !u!1 &813415580
 GameObject:
   m_ObjectHideFlags: 0
@@ -13202,10 +13186,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1f07dd2bf736bd4782824ba90e58e59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inventoryData: {fileID: 11400000, guid: fbab09d75ab3d0b478124589682083e4, type: 2}
   equipmentsData: {fileID: 11400000, guid: 7cf580e856a77ce4da56f996d3fe3726, type: 2}
   itemHolderPrefab: {fileID: 8088111596218479852, guid: 4d90f13d5df79a445939ed058f9b9785,
     type: 3}
+  itemTypes: 0
 --- !u!1 &985133701
 GameObject:
   m_ObjectHideFlags: 0
@@ -13920,8 +13904,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 786270581}
-        m_MethodName: AddNewHeadToInventory
-        m_Mode: 1
+        m_MethodName: AddNewRandomHeadToInventory
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -14783,12 +14767,12 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 786270581}
-        m_MethodName: AddNewWeaponToInventory
+        m_MethodName: InitPlayerEquipments
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 3
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -20092,10 +20076,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1f07dd2bf736bd4782824ba90e58e59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inventoryData: {fileID: 11400000, guid: d69b2eedd405c9842bf20296ac10bfe4, type: 2}
   equipmentsData: {fileID: 11400000, guid: e91a3e870be0cb845b0e4c0f5ae28e88, type: 2}
   itemHolderPrefab: {fileID: 8088111596218479852, guid: 4d90f13d5df79a445939ed058f9b9785,
     type: 3}
+  itemTypes: 3
 --- !u!1 &1584871956
 GameObject:
   m_ObjectHideFlags: 0
@@ -20233,10 +20217,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1f07dd2bf736bd4782824ba90e58e59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inventoryData: {fileID: 11400000, guid: e45bd583e4271b84d9a9fb972a1e2c91, type: 2}
   equipmentsData: {fileID: 11400000, guid: 901f083fb2205c243aca3eca6572a3a2, type: 2}
   itemHolderPrefab: {fileID: 8088111596218479852, guid: 4d90f13d5df79a445939ed058f9b9785,
     type: 3}
+  itemTypes: 2
 --- !u!1 &1608749388
 GameObject:
   m_ObjectHideFlags: 0
@@ -26152,8 +26136,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 786270581}
-        m_MethodName: AddNewLegToInventory
-        m_Mode: 1
+        m_MethodName: AddNewRandomLegToInventory
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -26826,8 +26810,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 786270581}
-        m_MethodName: AddNewChestToInventory
-        m_Mode: 1
+        m_MethodName: AddNewRandomChestToInventory
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

@@ -2,10 +2,13 @@
 using UnityEditor;
 
 [CreateAssetMenu()]
-public abstract class Equipment : ScriptableObject
+public abstract class Equipment : ScriptableObject, IEquipment
 {
-    [SerializeField] private string id;
+    [SerializeField] protected string id;
     public string ID => id;
+
+    [SerializeField] protected Sprite itemIcon;
+    public Sprite ItemIcon => itemIcon;
 
     private static PlayerStats _player;
     private static PlayerStats Player
@@ -18,34 +21,19 @@ public abstract class Equipment : ScriptableObject
         }
     }
 
+
+    #region Curves
     [Tooltip("Кривая зависимости цены улучшения от текущего уровня предмета")]
     public ComplicationCurve costCurve;
 
     [Tooltip("Кривая зависимости величины бонусов к характеристикам игрока от текущего уровня предмета")]
     public ComplicationCurve bonusCurve;
+    #endregion
 
-    [SerializeField] protected Sprite itemIcon;
-    public Sprite ItemIcon
-    {
-        get
-        {
-            return itemIcon;
-        }
-    }
-
+    #region stats 
     public Rarity itemRarity;
 
-    public string itemName;
-
-    //[SerializeField] protected int _itemLevel;
-    //public int ItemLevel
-    //{
-    //    get => _itemLevel;
-    //    set
-    //    {
-    //        _itemLevel = value;
-    //    }
-    //}
+    public string itemName => name + GetHashCode().ToString();
 
     [SerializeField] protected float baseUpgradeCost;
 
@@ -60,23 +48,21 @@ public abstract class Equipment : ScriptableObject
     [SerializeField] protected float baseBonusWaterDmg;
 
     [SerializeField] protected FloatVariable gameGold;
-
+    #endregion
 
     private void OnValidate()
     {
-        Debug.Log("Validate");
+        //Debug.Log("Validate");
         //string path = AssetDatabase.GetAssetPath(this);
         //id = AssetDatabase.AssetPathToGUID(path);
-        id = GetInstanceID().ToString();
+        id = itemName;
     }
 
-    public Equipment(int level)
+    protected Equipment(int level)
     {
         //ItemLevel = level;
 
         //SetRarity();
-
-        itemName = name + GetHashCode().ToString();
     }
 
     public void SetRarity()
@@ -144,38 +130,19 @@ public abstract class Equipment : ScriptableObject
         EquipItem(level);
     }
 
-    public void SellItem(int level)
-    {
-        gameGold.Value += GetSellCost(level);
-    }
+    public void SellItem(int level) => gameGold.Value += GetSellCost(level);
 
-    public float GetUpgradeCost(int level)
-    {
-        return baseUpgradeCost + costCurve.GetEvaluate(level);
-    }
+    //TODO !Create separate class for item stats!
+    public float GetUpgradeCost(int level) => baseUpgradeCost + costCurve.GetEvaluate(level);
 
-    public float GetItemBonusHP(int level)
-    {
-        return (int)itemRarity * baseBonusHP + bonusCurve.GetEvaluate(level);
-    }
+    public float GetSellCost(int level) => 0.25f * GetUpgradeCost(level);
 
-    public float GetItemBonusPhysicalDmg(int level)
-    {
-        return (int)itemRarity * baseBonusPhysicalDmg + bonusCurve.GetEvaluate(level);
-    }
+    public float GetItemBonusHP(int level) => (int)itemRarity * baseBonusHP + bonusCurve.GetEvaluate(level);
 
-    public float GetItemBonusFireDmg(int level)
-    {
-        return (int)itemRarity * baseBonusFireDmg + bonusCurve.GetEvaluate(level);
-    }
+    public float GetItemBonusPhysicalDmg(int level) => (int)itemRarity * baseBonusPhysicalDmg + bonusCurve.GetEvaluate(level);
 
-    public float GetItemBonusWaterDmg(int level)
-    {
-        return (int)itemRarity * baseBonusWaterDmg + bonusCurve.GetEvaluate(level);
-    }
+    public float GetItemBonusFireDmg(int level) => (int)itemRarity * baseBonusFireDmg + bonusCurve.GetEvaluate(level);
 
-    public float GetSellCost(int level)
-    {
-        return 0.25f * GetUpgradeCost(level);
-    }
+    public float GetItemBonusWaterDmg(int level) => (int)itemRarity * baseBonusWaterDmg + bonusCurve.GetEvaluate(level);
+
 }

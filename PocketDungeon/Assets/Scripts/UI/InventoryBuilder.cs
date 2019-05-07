@@ -4,12 +4,23 @@ using UnityEngine;
 
 public class InventoryBuilder : MonoBehaviour
 {
-    [SerializeField] private GameInventoryData inventoryData;
+    private List<InventoryItem> _items;
+    private List<InventoryItem> items
+    {
+        get
+        {
+            SetContentViewType();
+            return _items;
+        }
+    }
+
     [SerializeField] private GameEquipmentData equipmentsData;
-    private List<GameObject> instItems;
     [SerializeField] private readonly int itemOffset;
     [SerializeField] private GameObject itemHolderPrefab;
+    [SerializeField] private ItemType itemTypes;
 
+
+    private List<GameObject> instItems;
     private RectTransform contentRect;
 
     private Queue<GameObject> SlotsPool = new Queue<GameObject>();
@@ -17,6 +28,27 @@ public class InventoryBuilder : MonoBehaviour
     private void Awake()
     {
         contentRect = GetComponent<RectTransform>();
+    }
+
+    private void SetContentViewType()
+    {
+        switch (itemTypes)
+        {
+            case ItemType.Head:
+                _items = SaveManager.save.inventoryData.heads;
+                break;
+            case ItemType.Сhest:
+                _items = SaveManager.save.inventoryData.chests;
+                break;
+            case ItemType.Legs:
+                _items = SaveManager.save.inventoryData.legs;
+                break;
+            case ItemType.Weapon:
+                _items = SaveManager.save.inventoryData.weapons; 
+                break;
+            default:
+                break;
+        }
     }
 
     private void OnEnable()
@@ -49,11 +81,11 @@ public class InventoryBuilder : MonoBehaviour
     {
         instItems = new List<GameObject>();
 
-        for (int i = 0; i < inventoryData.inventoryItems.Count; i++)
+        for (int i = 0; i < items.Count; i++)
         {
             instItems.Add(PoolObject());
 
-            instItems[i].GetComponent<InventoryElement>().AddItemOnThisSlot(GetEquipment(inventoryData.inventoryItems[i].id), inventoryData.inventoryItems[i]);
+            instItems[i].GetComponent<InventoryElement>().AddItemOnThisSlot(GetEquipment(items[i].id), items[i]);
 
             if (i == 0)
                 instItems[i].transform.localPosition = Vector2.zero;
@@ -78,7 +110,9 @@ public class InventoryBuilder : MonoBehaviour
             }
         }
 
+        Debug.LogError($"return null cant get{id} of type: {itemTypes} on {equipmentsData.name}");
         return null;
+        
     }
 
     /// <summary>
@@ -93,8 +127,8 @@ public class InventoryBuilder : MonoBehaviour
 
             var invItem = go.GetComponent<InventoryElement>().InvItem;
 
-            if (inventoryData.inventoryItems.Contains(invItem))
-                inventoryData.inventoryItems.Remove(invItem);
+            if (items.Contains(invItem))
+                items.Remove(invItem);
             instItems.Remove(go);
             RebuildContent();
         }
@@ -115,6 +149,6 @@ public class InventoryBuilder : MonoBehaviour
     private void ChangeContentSize()
     {
         contentRect.localPosition = Vector2.zero;
-        contentRect.sizeDelta = new Vector2(0.0f, inventoryData.inventoryItems.Count * (itemHolderPrefab.GetComponent<RectTransform>().sizeDelta.y + itemOffset));
+        contentRect.sizeDelta = new Vector2(0.0f, items.Count * (itemHolderPrefab.GetComponent<RectTransform>().sizeDelta.y + itemOffset));
     }
 }
