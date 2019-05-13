@@ -25,9 +25,9 @@ public class UI_Stats_shower : MonoBehaviour
 
     public void UpdateStats()
     {
-        hp.text = ps.HP.CurrentValue.ToString("0");
-        p_dmg.text = ps.PhysicalDmg.CurrentValue.ToString("0");
-        f_dmg.text = ps.FireDmg.CurrentValue.ToString("0");
-        w_dmg.text = ps.WaterDmg.CurrentValue.ToString("0");
+        hp.text     = ps.HP.CurrentValue.Converter();
+        p_dmg.text  = ps.PhysicalDmg.CurrentValue.Converter();
+        f_dmg.text  = ps.FireDmg.CurrentValue.Converter();
+        w_dmg.text  = ps.WaterDmg.CurrentValue.Converter();
     }
 }

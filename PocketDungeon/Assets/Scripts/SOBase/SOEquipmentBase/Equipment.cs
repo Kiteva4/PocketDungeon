@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEditor;
 
 [CreateAssetMenu()]
 public abstract class Equipment : ScriptableObject, IEquipment
@@ -21,7 +20,6 @@ public abstract class Equipment : ScriptableObject, IEquipment
         }
     }
 
-
     #region Curves
     [Tooltip("Кривая зависимости цены улучшения от текущего уровня предмета")]
     public ComplicationCurve costCurve;
@@ -33,7 +31,7 @@ public abstract class Equipment : ScriptableObject, IEquipment
     #region stats 
     public Rarity itemRarity;
 
-    public string itemName => name + GetHashCode().ToString();
+    public string itemName => name;
 
     [SerializeField] protected float baseUpgradeCost;
 
@@ -47,7 +45,7 @@ public abstract class Equipment : ScriptableObject, IEquipment
     public bool haveWaterDmg;
     [SerializeField] protected float baseBonusWaterDmg;
 
-    [SerializeField] protected FloatVariable gameGold;
+    //[SerializeField] protected FloatVariable gameGold;
     #endregion
 
     private void OnValidate()
@@ -79,15 +77,15 @@ public abstract class Equipment : ScriptableObject, IEquipment
             itemRarity = Rarity.Common;
     }
 
-    public void UpgradeItemLevel(ref InventoryItem invItem)
+    public void UpgradeItemLevel(InventoryItem invItem)
     {
-        if (gameGold.Value < GetUpgradeCost(invItem.level))
+        if (SaveManager.save.goldCount < GetUpgradeCost(invItem.level))
         {
             Debug.Log("Need more Gold");
         }
         else
         {
-            gameGold.AddToValue(-GetUpgradeCost(invItem.level));
+            SaveManager.save.goldCount-= GetUpgradeCost(invItem.level);
             invItem.level++;
         }
     }
@@ -130,19 +128,19 @@ public abstract class Equipment : ScriptableObject, IEquipment
         EquipItem(level);
     }
 
-    public void SellItem(int level) => gameGold.Value += GetSellCost(level);
+    public void SellItem(int level) => SaveManager.save.goldCount += GetSellCost(level);
 
     //TODO !Create separate class for item stats!
-    public float GetUpgradeCost(int level) => baseUpgradeCost + costCurve.GetEvaluate(level);
+    public float GetUpgradeCost(int level) => baseUpgradeCost * Mathf.Pow(1.15f, level);
 
     public float GetSellCost(int level) => 0.25f * GetUpgradeCost(level);
 
-    public float GetItemBonusHP(int level) => (int)itemRarity * baseBonusHP + bonusCurve.GetEvaluate(level);
+    public float GetItemBonusHP(int level) => ((int)itemRarity + baseBonusHP)* Mathf.Pow(1.09f, level);
 
-    public float GetItemBonusPhysicalDmg(int level) => (int)itemRarity * baseBonusPhysicalDmg + bonusCurve.GetEvaluate(level);
+    public float GetItemBonusPhysicalDmg(int level) => ((int)itemRarity + baseBonusPhysicalDmg) * Mathf.Pow(1.09f, level);
 
-    public float GetItemBonusFireDmg(int level) => (int)itemRarity * baseBonusFireDmg + bonusCurve.GetEvaluate(level);
+    public float GetItemBonusFireDmg(int level) => ((int)itemRarity + baseBonusFireDmg) * Mathf.Pow(1.09f, level);
 
-    public float GetItemBonusWaterDmg(int level) => (int)itemRarity * baseBonusWaterDmg + bonusCurve.GetEvaluate(level);
+    public float GetItemBonusWaterDmg(int level) => ((int)itemRarity + baseBonusWaterDmg) * Mathf.Pow(1.09f, level);
 
 }

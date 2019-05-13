@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.Events;
@@ -18,20 +17,43 @@ public class InventoryElement : MonoBehaviour
         }
     }
 
+    private InventorySelector inventorySelector;
+
     private Equipment _equipment;
-    public Equipment EquipItem
+    public Equipment equipment
     {
         get => _equipment;
         set => _equipment = value;
     }
 
-
-    private InventoryItem invItem;
-    public InventoryItem InvItem
+    private InventoryItem _inventoryItem;
+    public InventoryItem inventoryItem
     {
-        get => invItem;
-        set => invItem = value;
+        get => _inventoryItem;
+        set
+        {
+            _inventoryItem = value;
+        }
     }
+
+    private bool _isEquiped;
+    private bool IsEquiped
+    {
+        get => _isEquiped;
+        set
+        {
+            _isEquiped = value;
+            if(value == true)
+            {
+                HideButtonsOnEquippedElement();
+            }
+            else
+            {
+                ShowButtonsOnUnequippedElement();
+            }
+        }
+    }
+
     #endregion
 
     #region UI links
@@ -52,26 +74,56 @@ public class InventoryElement : MonoBehaviour
     [SerializeField] protected UnityEvent UpdateGold;
     #endregion
 
-
     private void Awake()
     {
         equipButton.GetComponent<Button>().onClick.AddListener(HandlerOnClickEquipButton);
         upgradeButton.GetComponent<Button>().onClick.AddListener(HandlerOnClickUpgradeButton);
         sellButton.GetComponent<Button>().onClick.AddListener(HandlerOnClickSellButton);
+
+        inventorySelector = GetComponentInParent<InventorySelector>();
     }
 
-    public void AddItemOnThisSlot(Equipment eq, InventoryItem invItem)
+    public void AddItemOnThisSlot(Equipment equipment, InventoryItem inventoryItem)
     {
-        EquipItem = eq;
-        //if (EquipItem == null) Debug.Log("EquipItem == null");
+        this.equipment = equipment;
+        this.inventoryItem = inventoryItem;
+        IsEquiped = this.inventoryItem.isEquipped;
 
-        InvItem = invItem;
-        //Debug.Log(InvItem.level + " " + invItem.id);
+        itemName.text = equipment.itemName;
+        itemImg.sprite = equipment.ItemIcon;
 
-        itemName.text = eq.itemName;
-        itemImg.sprite = eq.ItemIcon;
+        if (IsEquiped == true) inventorySelector.SelectInventoryElement(this); //EquipThisItem();
 
         UpgradeDesk();
+    }
+
+    //скрывает кнопки и записывает в changeEquippedEvent (см выше на одну строчку) ссылку на метод, который включает 
+    //отображения кнопок данного класса
+    public void EquipThisItem()
+    {
+        IsEquiped = inventoryItem.isEquipped = true;
+        inventorySelector.SelectInventoryElement(this);
+        //Снаряжаем игрока в слот и прибавляем к статам
+        PlayerEC.Equip(equipment, _inventoryItem.level);
+        //Обновление визуального отображения статов игрока
+        UpdateStats.Invoke();
+    }
+
+    public void UnequipThisItem()
+    {
+        IsEquiped = inventoryItem.isEquipped = false;
+    }
+
+    private void ShowButtonsOnUnequippedElement()
+    {
+        sellButton.SetActive(true);
+        equipButton.SetActive(true);
+    }
+
+    private void HideButtonsOnEquippedElement()
+    {
+        sellButton.SetActive(false);
+        equipButton.SetActive(false);
     }
 
     /// <summary>
@@ -79,9 +131,9 @@ public class InventoryElement : MonoBehaviour
     /// </summary>
     private void UpgradeDesk()
     {
-        sellCost.text = EquipItem.GetSellCost(invItem.level).ToString("0");
-        upgradeCost.text = EquipItem.GetUpgradeCost(invItem.level).ToString("0");
-        itemLevel.text = invItem.level.ToString("0");
+        sellCost.text =     equipment.GetSellCost(_inventoryItem.level).Converter();
+        upgradeCost.text =  equipment.GetUpgradeCost(_inventoryItem.level).Converter();
+        itemLevel.text =    _inventoryItem.level.ToString("0");
     }
 
     /// <summary>
@@ -89,7 +141,7 @@ public class InventoryElement : MonoBehaviour
     /// </summary>
     private void SellInventoryElement()
     {
-        EquipItem.SellItem(invItem.level);
+        equipment.SellItem(_inventoryItem.level);
         GetComponentInParent<InventoryBuilder>().RemoveItem(gameObject);
     }
 
@@ -97,15 +149,19 @@ public class InventoryElement : MonoBehaviour
 
     public void HandlerOnClickEquipButton()
     {
-        PlayerEC.Equip(EquipItem, invItem.level);
-        UpdateStats.Invoke();
+        EquipThisItem();
     }
 
     public void HandlerOnClickUpgradeButton()
     {
-        EquipItem.UpgradeItemLevel(ref invItem);
+        equipment.UpgradeItemLevel(_inventoryItem);
+
+        //если улучшаем одетый предмет - обновляем бонусы от него (переодеваем  сновым уровнем)
+        if (IsEquiped == true) PlayerEC.Equip(equipment, _inventoryItem.level);
+
         UpdateStats.Invoke();
         UpdateGold.Invoke();
+
         UpgradeDesk();
     }
 

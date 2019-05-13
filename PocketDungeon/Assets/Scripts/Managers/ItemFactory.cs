@@ -11,23 +11,23 @@ public class ItemFactory : IItemFactory
         this.itemsData = itemsData;
     }
 
-    public IEquipment GetRandomItem()
+    public Equipment GetRandomItem()
     {
         float roll = Random.Range(0f, 100f);
 
-        if (roll >= 95)
+        if (roll >= 95f)
         {
 
             return GetLegendaryItem();
         }
 
-        if (roll >= 80)
+        if (roll >= 80f)
         {
             return GetEpicItem();
 
         }
 
-        if (roll >= 50)
+        if (roll >= 50f)
         {
             return GetRareItem();
         }
@@ -35,22 +35,22 @@ public class ItemFactory : IItemFactory
         return GetCommonItem();
     }
 
-    public IEquipment GetCommonItem()
+    public Equipment GetCommonItem()
     {
         return itemsData.Common[Random.Range(0, itemsData.Common.Count - 1)];
     }
 
-    public IEquipment GetEpicItem()
+    public Equipment GetEpicItem()
     {
         return itemsData.Epic[Random.Range(0, itemsData.Epic.Count - 1)];
     }
 
-    public IEquipment GetLegendaryItem()
+    public Equipment GetLegendaryItem()
     {
         return itemsData.Legendary[Random.Range(0, itemsData.Legendary.Count - 1)];
     }
 
-    public IEquipment GetRareItem()
+    public Equipment GetRareItem()
     {
         return itemsData.Rare[Random.Range(0, itemsData.Rare.Count - 1)];
     }

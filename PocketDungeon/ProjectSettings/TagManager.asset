@@ -44,3 +44,6 @@ TagManager:
   - name: Buttons
     uniqueID: 2501705863
     locked: 0
+  - name: Boss
+    uniqueID: 2902125665
+    locked: 0

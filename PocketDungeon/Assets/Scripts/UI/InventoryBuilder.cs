@@ -1,9 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Profiling;
 
+[RequireComponent(typeof(InventorySelector))]
 public class InventoryBuilder : MonoBehaviour
 {
+    [SerializeField] private GameEquipmentData equipmentsData;
+    [SerializeField] private readonly int itemOffset;
+    [SerializeField] private GameObject itemHolderPrefab;
+    [SerializeField] private ItemType itemTypes;
+
     private List<InventoryItem> _items;
     private List<InventoryItem> items
     {
@@ -13,12 +20,6 @@ public class InventoryBuilder : MonoBehaviour
             return _items;
         }
     }
-
-    [SerializeField] private GameEquipmentData equipmentsData;
-    [SerializeField] private readonly int itemOffset;
-    [SerializeField] private GameObject itemHolderPrefab;
-    [SerializeField] private ItemType itemTypes;
-
 
     private List<GameObject> instItems;
     private RectTransform contentRect;
@@ -35,16 +36,16 @@ public class InventoryBuilder : MonoBehaviour
         switch (itemTypes)
         {
             case ItemType.Head:
-                _items = SaveManager.save.inventoryData.heads;
+                _items = SaveManager.save.inventoryData.headsData.items;
                 break;
             case ItemType.Сhest:
-                _items = SaveManager.save.inventoryData.chests;
+                _items = SaveManager.save.inventoryData.chestsData.items;
                 break;
             case ItemType.Legs:
-                _items = SaveManager.save.inventoryData.legs;
+                _items = SaveManager.save.inventoryData.legsData.items;
                 break;
             case ItemType.Weapon:
-                _items = SaveManager.save.inventoryData.weapons; 
+                _items = SaveManager.save.inventoryData.weaponsData.items; 
                 break;
             default:
                 break;
@@ -93,8 +94,8 @@ public class InventoryBuilder : MonoBehaviour
                 instItems[i].transform.localPosition = new Vector2(
                     instItems[i].transform.localPosition.x,
                     instItems[i - 1].transform.localPosition.y - instItems[i].GetComponent<RectTransform>().sizeDelta.y - itemOffset);
-
             instItems[i].SetActive(true);
+
         }
 
         ChangeContentSize();
@@ -125,7 +126,7 @@ public class InventoryBuilder : MonoBehaviour
             go.SetActive(false);
             SlotsPool.Enqueue(go);
 
-            var invItem = go.GetComponent<InventoryElement>().InvItem;
+            var invItem = go.GetComponent<InventoryElement>().inventoryItem;
 
             if (items.Contains(invItem))
                 items.Remove(invItem);
@@ -148,7 +149,8 @@ public class InventoryBuilder : MonoBehaviour
 
     private void ChangeContentSize()
     {
-        contentRect.localPosition = Vector2.zero;
+        contentRect.anchoredPosition = Vector2.zero;
+        //contentRect.localPosition
         contentRect.sizeDelta = new Vector2(0.0f, items.Count * (itemHolderPrefab.GetComponent<RectTransform>().sizeDelta.y + itemOffset));
     }
 }

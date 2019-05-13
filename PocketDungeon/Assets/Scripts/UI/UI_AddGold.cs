@@ -10,7 +10,8 @@ public class UI_AddGold : MonoBehaviour
 
     public void AddGold()
     {
-        gold.Value += 1000;
+        SaveManager.save.goldCount += 10000;
+        gold.Value = SaveManager.save.goldCount;
         OnGoldChanges.Invoke();
     }
 }

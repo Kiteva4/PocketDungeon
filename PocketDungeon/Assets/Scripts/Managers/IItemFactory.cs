@@ -1,7 +1,8 @@
 ﻿public interface IItemFactory
 {
-    IEquipment GetCommonItem();
-    IEquipment GetRareItem();
-    IEquipment GetEpicItem();
-    IEquipment GetLegendaryItem();
+    Equipment GetRandomItem();
+    Equipment GetCommonItem();
+    Equipment GetRareItem();
+    Equipment GetEpicItem();
+    Equipment GetLegendaryItem();
 }

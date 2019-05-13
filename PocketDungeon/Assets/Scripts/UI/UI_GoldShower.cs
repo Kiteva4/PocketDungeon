@@ -13,6 +13,7 @@ public class UI_GoldShower : MonoBehaviour
 
     public void UpdateGold()
     {
-        goldCountText.text = goldCount.Value.ToString("0");
+        goldCount.Value = SaveManager.save.goldCount;
+        goldCountText.text = goldCount.Value.Converter();
     }
 }

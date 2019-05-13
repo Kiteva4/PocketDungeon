@@ -1,10 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using System;
 
-[System.Serializable]
+[Serializable]
 public class InventoryData
 {
-    public List<InventoryItem> weapons = new List<InventoryItem>();
-    public List<InventoryItem> heads = new List<InventoryItem>();
-    public List<InventoryItem> chests = new List<InventoryItem>();
-    public List<InventoryItem> legs = new List<InventoryItem>();
+    public InventoryItemsData weaponsData = new InventoryItemsData();
+    public InventoryItemsData headsData = new InventoryItemsData();
+    public InventoryItemsData chestsData = new InventoryItemsData();
+    public InventoryItemsData legsData = new InventoryItemsData();
 }

@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class LootManager : MonoBehaviour
 {
@@ -9,11 +7,10 @@ public class LootManager : MonoBehaviour
     [SerializeField] private GameEquipmentData allChestsData;
     [SerializeField] private GameEquipmentData allLegsData;
 
-    private ItemFactory weaponFactory;
-    private ItemFactory headFactory;
-    private ItemFactory chestFactory;
-    private ItemFactory legFactory;
-
+    private InventoryItemCreator weaponCreator;
+    private InventoryItemCreator headCreator;
+    private InventoryItemCreator chestCreator;
+    private InventoryItemCreator legCreator;
 
     private PlayerEquipmentController _playerEC;
     private PlayerEquipmentController PlayerEC
@@ -26,176 +23,118 @@ public class LootManager : MonoBehaviour
         }
     }
 
-    private void Awake()
+    private void InitCreators()
     {
-        weaponFactory = new ItemFactory(allWeaponsData);
-        headFactory = new ItemFactory(allHeadsData);
-        chestFactory = new ItemFactory(allChestsData);
-        legFactory = new ItemFactory(allLegsData);
+        weaponCreator = new InventoryItemCreator(allWeaponsData, PlayerEC.weaponSlot, SaveManager.save.inventoryData.weaponsData);
+        headCreator = new InventoryItemCreator(allHeadsData, PlayerEC.headSlot, SaveManager.save.inventoryData.headsData);
+        chestCreator = new InventoryItemCreator(allChestsData, PlayerEC.chestSlot, SaveManager.save.inventoryData.chestsData);
+        legCreator = new InventoryItemCreator(allLegsData, PlayerEC.legSlot, SaveManager.save.inventoryData.legsData);
     }
-
-    #region Weapon creations
-    public void AddNewRandomWeaponToInventory(int? level = null)
-    {
-        Equipment equipment = (Equipment)weaponFactory.GetRandomItem();
-        InventoryItem item = new InventoryItem(equipment.ID, level ?? _playerEC.weaponLevel);
-        SaveManager.save.inventoryData.weapons.Add(item);
-    }
-
-    public void AddNewCommonWeaponToInventory(int? level = null)
-    {
-        Equipment equipment = (Equipment)weaponFactory.GetCommonItem();
-        InventoryItem item = new InventoryItem(equipment.ID, level ?? _playerEC.weaponLevel);
-        SaveManager.save.inventoryData.weapons.Add(item);
-    }
-
-    public void AddNewRareWeaponToInventory(int? level = null)
-    {
-        Equipment equipment = (Equipment)weaponFactory.GetRareItem();
-        InventoryItem item = new InventoryItem(equipment.ID, level ?? _playerEC.weaponLevel);
-        SaveManager.save.inventoryData.weapons.Add(item);
-    }
-
-    public void AddNewEpicWeaponToInventory(int? level = null)
-    {
-        Equipment equipment = (Equipment)weaponFactory.GetEpicItem();
-        InventoryItem item = new InventoryItem(equipment.ID, level ?? _playerEC.weaponLevel);
-        SaveManager.save.inventoryData.weapons.Add(item);
-    }
-
-    public void AddNewLegendaryWeaponToInventory(int? level = null)
-    {
-        Equipment equipment = (Equipment)weaponFactory.GetLegendaryItem();
-        InventoryItem item = new InventoryItem(equipment.ID, level ?? _playerEC.weaponLevel);
-        SaveManager.save.inventoryData.weapons.Add(item);
-    }
-    #endregion
-
-    #region Head creations
-    public void AddNewRandomHeadToInventory(int? level = null)
-    {
-        Equipment equipment = (Equipment)headFactory.GetRandomItem();
-        InventoryItem item = new InventoryItem(equipment.ID, level ?? _playerEC.headLevel);
-        SaveManager.save.inventoryData.heads.Add(item);
-    }
-
-    public void AddNewCommonHeadToInventory(int? level = null)
-    {
-        Equipment equipment = (Equipment)headFactory.GetCommonItem();
-        InventoryItem item = new InventoryItem(equipment.ID, level ?? _playerEC.headLevel);
-        SaveManager.save.inventoryData.heads.Add(item);
-
-    }
-
-    public void AddNewRareHeadToInventory(int? level = null)
-    {
-        Equipment equipment = (Equipment)headFactory.GetRareItem();
-        InventoryItem item = new InventoryItem(equipment.ID, level ?? _playerEC.headLevel);
-        SaveManager.save.inventoryData.heads.Add(item);
-    }
-
-    public void AddNewEpicHeadToInventory(int? level = null)
-    {
-        Equipment equipment = (Equipment)headFactory.GetEpicItem();
-        InventoryItem item = new InventoryItem(equipment.ID, level ?? _playerEC.headLevel);
-        SaveManager.save.inventoryData.heads.Add(item);
-    }
-
-    public void AddNewLegendaryHeadToInventory(int? level = null)
-    {
-        Equipment equipment;
-        equipment = (Equipment)headFactory.GetCommonItem();
-        InventoryItem item = new InventoryItem(equipment.ID, level ?? _playerEC.headLevel);
-        SaveManager.save.inventoryData.heads.Add(item);
-    }
-    #endregion
-
-    #region Chest creations
-    public void AddNewRandomChestToInventory(int? level = null)
-    {
-        Equipment equipment = (Equipment)chestFactory.GetRandomItem();
-        InventoryItem item = new InventoryItem(equipment.ID, level ?? _playerEC.chestLevel);
-        SaveManager.save.inventoryData.chests.Add(item);
-    }
-
-    public void AddNewCommonChestToInventory(int? level = null)
-    {
-        Equipment equipment = (Equipment)chestFactory.GetCommonItem();
-        InventoryItem item = new InventoryItem(equipment.ID, level ?? _playerEC.chestLevel);
-        SaveManager.save.inventoryData.chests.Add(item);
-    }
-
-    public void AddNewRareChestToInventory(int? level = null)
-    {
-        Equipment equipment = (Equipment)chestFactory.GetRareItem();
-        InventoryItem item = new InventoryItem(equipment.ID, level ?? _playerEC.chestLevel);
-        SaveManager.save.inventoryData.chests.Add(item);
-    }
-
-    public void AddNewEpicChestToInventory(int? level = null)
-    {
-        Equipment equipment = (Equipment)chestFactory.GetEpicItem();
-        InventoryItem item = new InventoryItem(equipment.ID, level ?? _playerEC.chestLevel);
-        SaveManager.save.inventoryData.chests.Add(item);
-    }
-
-    public void AddNewLegendaryChestToInventory(int? level = null)
-    {
-        Equipment equipment = (Equipment)chestFactory.GetLegendaryItem();
-        InventoryItem item = new InventoryItem(equipment.ID, level ?? _playerEC.chestLevel);
-        SaveManager.save.inventoryData.chests.Add(item);
-    }
-    #endregion
-
-    #region Leg creations
-    public void AddNewRandomLegToInventory(int? level = null)
-    {
-        Equipment equipment = (Equipment)legFactory.GetRandomItem();
-        InventoryItem item = new InventoryItem(equipment.ID, level ?? _playerEC.legsLevel);
-        SaveManager.save.inventoryData.legs.Add(item);
-    }
-
-    public void AddNewCommonLegToInventory(int? level = null)
-    {
-        Equipment equipment = (Equipment)legFactory.GetCommonItem();
-        InventoryItem item = new InventoryItem(equipment.ID, level ?? _playerEC.legsLevel);
-        SaveManager.save.inventoryData.legs.Add(item);
-    }
-
-    public void AddNewRareLegToInventory(int? level = null)
-    {
-        Equipment equipment = (Equipment)legFactory.GetRareItem();
-        InventoryItem item = new InventoryItem(equipment.ID, level ?? _playerEC.legsLevel);
-        SaveManager.save.inventoryData.legs.Add(item);
-    }
-
-    public void AddNewEpicLegToInventory(int? level = null)
-    {
-        Equipment equipment = (Equipment)legFactory.GetEpicItem();
-        InventoryItem item = new InventoryItem(equipment.ID, level ?? _playerEC.legsLevel);
-        SaveManager.save.inventoryData.legs.Add(item);
-    }
-
-    public void AddNewLegendaryLegToInventory(int? level = null)
-    {
-        Equipment equipment = (Equipment)legFactory.GetLegendaryItem();
-        InventoryItem item = new InventoryItem(equipment.ID, level ?? _playerEC.legsLevel);
-        SaveManager.save.inventoryData.legs.Add(item);
-    }
-    #endregion
 
     #region Init equipments
     public void InitPlayerEquipments()
     {
-        if (weaponFactory == null && headFactory == null && chestFactory == null && legFactory == null)
+        InitCreators();
+    }
+
+    public void CollectFirstEquipments()
+    {
+        if (weaponCreator == null && headCreator == null && chestCreator == null && legCreator == null)
         {
-            Debug.LogError("factories is empty");
-            return;
+            InitCreators();
         }
-        AddNewCommonWeaponToInventory(1);
-        AddNewCommonHeadToInventory(2);
-        AddNewCommonChestToInventory(3);
-        AddNewCommonLegToInventory(4);
+
+        weaponCreator.AddNewCommonItem(1, true);
+        headCreator.AddNewCommonItem(1,true);
+        chestCreator.AddNewCommonItem(1,true);
+        legCreator.AddNewCommonItem(1,true);
+    }
+
+    public void InitEquipLoadedItems()
+    {
+        FindToEquip(SaveManager.save.inventoryData.weaponsData, allWeaponsData);
+        FindToEquip(SaveManager.save.inventoryData.headsData, allHeadsData);
+        FindToEquip(SaveManager.save.inventoryData.chestsData, allChestsData);
+        FindToEquip(SaveManager.save.inventoryData.legsData, allLegsData);
+    }
+
+    private void FindToEquip(InventoryItemsData save, GameEquipmentData dataBase)
+    {
+        foreach (var v in save.items)
+        {
+            if (v.isEquipped == true)
+            {
+                PlayerEC.Equip(GetEquipment(v.id, dataBase), v.level);
+                return;
+            }
+        }
+        Debug.Log($"can faind on {save} equipment items");
+    }
+
+    private Equipment GetEquipment(string id, GameEquipmentData data)
+    {
+        foreach (var item in data.Items)
+        {
+            if (item.ID == id)
+            {
+                return item;
+            }
+        }
+
+        Debug.LogError($"return null cant get{id} on {data.name}");
+        return null;
     }
     #endregion
+
+
+    //TODO удалить
+    public void OnClickCreateWepon()
+    {
+        weaponCreator.AddRandomItem(2);
+        //Debug.Log("create weapon");
+    }
+
+    public void OnClickCreateHead()
+    {
+        headCreator.AddRandomItem(2);
+        //Debug.Log("create head");
+    }
+
+    public void OnClickCreateChest()
+    {
+        chestCreator.AddRandomItem(3);
+        //Debug.Log("create chest");
+    }
+
+    public void OnClickCreateLeg()
+    {
+        legCreator.AddNewCommonItem(1);
+        //Debug.Log("create leg");
+    }
+
+    public void OnCreateRandomItem()
+    {
+        int i = Random.Range(1, 4);
+        switch (i)  
+        {
+            case 1:
+                weaponCreator.AddRandomItem(PlayerEC.weaponSlot.level);
+                Debug.Log("weaponCreator AddRandomItem");
+                break;
+            case 2:
+                headCreator.AddRandomItem(PlayerEC.headSlot.level);
+                Debug.Log("headCreator AddRandomItem");
+                break;
+            case 3:
+                chestCreator.AddRandomItem(PlayerEC.chestSlot.level);
+                Debug.Log("chestCreator AddRandomItem");
+                break;
+            case 4:
+                legCreator.AddNewCommonItem(PlayerEC.legSlot.level);
+                Debug.Log("legCreator AddRandomItem");
+                break;
+            default:
+                break;
+        }
+    }
 }

@@ -4,8 +4,8 @@
 public enum Rarity
 {
 	Legendary = 8,
-	Epic = 5,
-	Rare = 3,
+	Epic = 6,
+	Rare = 4,
 	Common = 2
 }
 

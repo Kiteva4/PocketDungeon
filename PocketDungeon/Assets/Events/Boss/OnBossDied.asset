@@ -10,5 +10,5 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 13bd4505187e20e4c9aad09846409875, type: 3}
-  m_Name: OnBossDead
+  m_Name: OnBossDied
   m_EditorClassIdentifier: 

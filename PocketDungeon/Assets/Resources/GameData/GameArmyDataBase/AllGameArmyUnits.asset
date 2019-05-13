@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 375b6fa0da352da4e96d340a66bb7b89, type: 3}
+  m_Name: AllGameArmyUnits
+  m_EditorClassIdentifier: 
+  units:
+  - {fileID: 11400000, guid: 30abca61131da5e49a4aed49aacf3a8f, type: 2}
+  - {fileID: 11400000, guid: 43608853c8050254fbb4820e22de9329, type: 2}
+  - {fileID: 11400000, guid: 0a13dd4ecc604c24bbecfb16997fe2c9, type: 2}
+  - {fileID: 11400000, guid: 511198397f8d519488e5c7cc98127452, type: 2}
+  - {fileID: 11400000, guid: 70ef39f32a92631458282d4f11bd332c, type: 2}
+  - {fileID: 11400000, guid: 27d7e39e9a12d8a4e945462042cacb48, type: 2}
