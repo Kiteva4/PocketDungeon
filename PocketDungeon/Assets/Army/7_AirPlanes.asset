@@ -16,6 +16,5 @@ MonoBehaviour:
   unitName: 7_AirPlanes
   count: 0
   baseUpgradeCost: 200000
-  baseDamage: 400
+  baseDamage: 4000
   multipler: 1.15
-  gameGold: {fileID: 11400000, guid: 90f9be530f0d15342962d24b6236e843, type: 2}

@@ -7,7 +7,6 @@ public class Army : ScriptableObject
     public Sprite UnitIcon => unitIcon;
 
     [SerializeField] private string unitName;
-    [SerializeField] private int count;
     [SerializeField] public float baseUpgradeCost;
     [SerializeField] private float baseDamage;
     [SerializeField] private float multipler = 1.15f;

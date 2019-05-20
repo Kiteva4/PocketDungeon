@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1109f363b943a14db74c6e3e85291f0, type: 3}
   m_Name: 3_Hammer
   m_EditorClassIdentifier: 
+  id: 3_Hammer
+  itemIcon: {fileID: 21300000, guid: c6783fcd47ffd504d9ed4e4d6b4ed173, type: 3}
   costCurve: {fileID: 11400000, guid: c4fff2840b45eec4db61f0467bec7c91, type: 2}
   bonusCurve: {fileID: 11400000, guid: 1cb505722772ad242a73209ed74f6ae5, type: 2}
-  itemIcon: {fileID: 21300000, guid: c6783fcd47ffd504d9ed4e4d6b4ed173, type: 3}
-  itemRarity: 8
-  itemName: Axe
-  _itemLevel: 1
+  Rarity: 3
+  itemName: Hammer
   baseUpgradeCost: 1
   baseBonusHP: 1
   baseBonusPhysicalDmg: 1
@@ -25,4 +25,3 @@ MonoBehaviour:
   baseBonusFireDmg: 1
   haveWaterDmg: 1
   baseBonusWaterDmg: 1
-  gameGold: {fileID: 11400000, guid: 90f9be530f0d15342962d24b6236e843, type: 2}

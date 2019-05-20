@@ -7,7 +7,7 @@ using UnityEngine.Profiling;
 public class InventoryBuilder : MonoBehaviour
 {
     [SerializeField] private GameEquipmentData equipmentsData;
-    [SerializeField] private readonly int itemOffset;
+    [SerializeField] private int itemOffset;
     [SerializeField] private GameObject itemHolderPrefab;
     [SerializeField] private ItemType itemTypes;
 
@@ -38,7 +38,7 @@ public class InventoryBuilder : MonoBehaviour
             case ItemType.Head:
                 _items = SaveManager.save.inventoryData.headsData.items;
                 break;
-            case ItemType.Сhest:
+            case ItemType.Chest:
                 _items = SaveManager.save.inventoryData.chestsData.items;
                 break;
             case ItemType.Legs:

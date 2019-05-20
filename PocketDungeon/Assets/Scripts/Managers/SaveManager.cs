@@ -44,17 +44,18 @@ public class SaveManager : MonoBehaviour
         if (File.Exists(path))
         {
             save = JsonUtility.FromJson<SaveData>(File.ReadAllText(path));
-            InitSaves();
+            lootManager.InitPlayerEquipments();
         }
 
         else
         {
             Debug.Log("InitLoad");
-            GetFirstItems();
+            lootManager.CollectFirstEquipments();
+            lootManager.InitBoxList();
             GetFirstCurrencies();
             armyManager.InitArmiesUnit();
         }
-
+        lootManager.InitBoxController();
         lootManager.InitEquipLoadedItems();
         armyManager.WakeUpArmy();
     }
@@ -72,21 +73,9 @@ public class SaveManager : MonoBehaviour
     }
     #endregion
 
-    /// <summary>
-    /// При отсутствии файла сохранений при первом запуске игры
-    /// </summary>
-    private void InitSaves()
-    {
-        lootManager.InitPlayerEquipments();
-    }
-
-    public void GetFirstItems()
-    {
-        lootManager.CollectFirstEquipments();
-    }
     public void GetFirstCurrencies()
     {
-        save.goldCount = 2;
+        save.goldCount = 10f;
         OnGpdateGold?.Invoke();
     }
 

@@ -3,21 +3,24 @@
 /// </summary>
 public enum Rarity
 {
-	Legendary = 8,
-	Epic = 6,
-	Rare = 4,
-	Common = 2
+	Legendary = 4,
+	Epic = 3,
+	Rare = 2,
+	Common = 1
 }
 
 /// <summary>
 /// Слот экипировки определяет тип предмета
 /// </summary>
+[System.Serializable]
 public enum ItemType
 {
 	Head,
-	Сhest,
+	Chest,
 	Legs,
-	Weapon
+	Weapon,
+
+    count
 }
 
 /// <summary>

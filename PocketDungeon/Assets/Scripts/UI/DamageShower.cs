@@ -23,7 +23,7 @@ public class DamageShower : MonoBehaviour
         for (int i = 0; i < maxObjectOnPool; i++)
         {
             pool.Enqueue(Instantiate(textPrefab, parentTransform));
-            Debug.Log("Enqueue");
+            //Debug.Log("Enqueue");
         }
     }
 
@@ -38,7 +38,7 @@ public class DamageShower : MonoBehaviour
                 currentIndex = 0;
             }
 
-            Debug.Log("Deueue");
+            //Debug.Log("Deueue");
             return pool.Dequeue();
         }
 
@@ -58,13 +58,13 @@ public class DamageShower : MonoBehaviour
             go.SetActive(true);
             return;
         }
-        Debug.Log("poll returned null");
+        //Debug.Log("poll returned null");
     }
 
     public void ReturnToPool(GameObject go)
     {
         pool.Enqueue(go);
         go.SetActive(false);
-        Debug.Log("falsed");
+        //Debug.Log("falsed");
     }
 }

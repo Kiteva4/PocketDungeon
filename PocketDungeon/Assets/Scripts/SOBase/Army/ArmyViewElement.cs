@@ -62,7 +62,7 @@ public class ArmyViewElement : MonoBehaviour
     {
         if(army.GetBuyCost(armyUnit.unitCount) > SaveManager.save.goldCount)
         {
-            Debug.Log($"{armyUnit.unitName} closed");
+            //Debug.Log($"{armyUnit.unitName} closed");
             buyButton.interactable =false;
             buyButton.image.color = Color.gray;
             armyBuyUnitCost.color = Color.red;
@@ -70,7 +70,7 @@ public class ArmyViewElement : MonoBehaviour
 
         else
         {
-            Debug.Log($"{armyUnit.unitName} opened");
+            //Debug.Log($"{armyUnit.unitName} opened");
 
             buyButton.interactable = true;
             buyButton.image.color = Color.grey;

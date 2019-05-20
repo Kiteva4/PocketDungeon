@@ -5,7 +5,13 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "EquipmentData", menuName = "Game/EquipmentData")]
 public class GameEquipmentData : ScriptableObject
 {
+    /// <summary>
+    /// Все предметы конкретного типа
+    /// </summary>
     public List<Equipment> Items;
+    /// <summary>
+    /// Выборка
+    /// </summary>
     public List<Equipment> Common;
     public List<Equipment> Rare;
     public List<Equipment> Epic;
@@ -17,7 +23,7 @@ public class GameEquipmentData : ScriptableObject
         Clear();
         foreach (var v in Items)
         {
-            switch (v.itemRarity)
+            switch (v.Rarity)
             {
                 case Rarity.Legendary:
                     if (!Legendary.Contains(v))

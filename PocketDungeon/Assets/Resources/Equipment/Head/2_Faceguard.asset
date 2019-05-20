@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2613e74327c1b444ae70b68b7fc4d03, type: 3}
   m_Name: 2_Faceguard
   m_EditorClassIdentifier: 
+  id: 2_Faceguard
+  itemIcon: {fileID: 21300000, guid: 6524ed1980d53f54c9b7a4e4b3996a86, type: 3}
   costCurve: {fileID: 11400000, guid: c4fff2840b45eec4db61f0467bec7c91, type: 2}
   bonusCurve: {fileID: 11400000, guid: 1cb505722772ad242a73209ed74f6ae5, type: 2}
-  itemIcon: {fileID: 21300000, guid: 6524ed1980d53f54c9b7a4e4b3996a86, type: 3}
-  itemRarity: 5
+  Rarity: 2
   itemName: Faceguard
-  _itemLevel: 1
   baseUpgradeCost: 1
   baseBonusHP: 1
   baseBonusPhysicalDmg: 1
@@ -25,4 +25,3 @@ MonoBehaviour:
   baseBonusFireDmg: 1
   haveWaterDmg: 1
   baseBonusWaterDmg: 1
-  gameGold: {fileID: 11400000, guid: 90f9be530f0d15342962d24b6236e843, type: 2}

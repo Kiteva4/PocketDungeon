@@ -9,6 +9,13 @@ public class BossHealthController : MonoBehaviour
     [SerializeField] private UnityEvent OnBossDied;
     [SerializeField] private UnityEvent OnGoldCountChange;
 
+    [SerializeField] private Image bossHeathlBar;
+    [SerializeField] private TextMeshProUGUI bossCurrentHealth;
+    [SerializeField] private TextMeshProUGUI bossMaxHealth;
+    [SerializeField] private TextMeshProUGUI bossRarityText;
+    [SerializeField] private TextMeshProUGUI bossLevelText;
+    [SerializeField] private float _currentHealth;
+
     private PlayerStats _playerStats;
     private PlayerStats playerStats
     {
@@ -19,7 +26,6 @@ public class BossHealthController : MonoBehaviour
             return _playerStats;
         }
     }
-
     private DamageShower _damageShower;
     private DamageShower damageShower
     {
@@ -30,7 +36,6 @@ public class BossHealthController : MonoBehaviour
             return _damageShower;
         }
     }
-
     private Rarity bossRarity
     {
         set
@@ -45,24 +50,16 @@ public class BossHealthController : MonoBehaviour
             return r;
         }
     }
-
-    [SerializeField] private Image bossHeathlBar;
-    [SerializeField] private TextMeshProUGUI bossCurrentHealth;
-    [SerializeField] private TextMeshProUGUI bossMaxHealth;
-    [SerializeField] private TextMeshProUGUI bossRarityText;
-    [SerializeField] private TextMeshProUGUI bossLevelText;
-
     private float maxHealth
     {
         get
         {
-            float maxHP = (1000 +  (int)bossRarity)* Mathf.Pow(1.15f, level);
+            float maxHP = (500 +  (int)bossRarity)* Mathf.Pow(1.15f, level);
             bossMaxHealth.text = maxHP.Converter();
             return maxHP;
         }
     }
 
-    [SerializeField] private float _currentHealth;
     private float currentHealth
     {
         get

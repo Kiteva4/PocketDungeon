@@ -30,7 +30,7 @@ public class InputManager : MonoBehaviour
 
         if (Input.anyKeyDown)
         {
-            Debug.Log("Tap");
+            //Debug.Log("Tap");
             OnPlayerTap?.Invoke();
             PlayerTapEvent = HandlerOnPlayerUntap;
         }
@@ -51,7 +51,7 @@ public class InputManager : MonoBehaviour
 
         if (!Input.anyKey)
         {
-            Debug.Log("Untap");
+            //Debug.Log("Untap");
             PlayerTapEvent = HandlerOnPlayerTap;
         }
 #endif

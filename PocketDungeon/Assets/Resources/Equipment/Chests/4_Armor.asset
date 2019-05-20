@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f9b6b650b16aa24f94fc8ad68be7eeb, type: 3}
   m_Name: 4_Armor
   m_EditorClassIdentifier: 
+  id: 4_Armor
+  itemIcon: {fileID: 21300000, guid: 5aead66c95e005349bd8742ea9b06db1, type: 3}
   costCurve: {fileID: 11400000, guid: c4fff2840b45eec4db61f0467bec7c91, type: 2}
   bonusCurve: {fileID: 11400000, guid: 1cb505722772ad242a73209ed74f6ae5, type: 2}
-  itemIcon: {fileID: 21300000, guid: 5aead66c95e005349bd8742ea9b06db1, type: 3}
-  itemRarity: 3
-  itemName: Strong Armor
-  _itemLevel: 1
+  Rarity: 4
+  itemName: Armor
   baseUpgradeCost: 1
   baseBonusHP: 1
   baseBonusPhysicalDmg: 1
@@ -25,4 +25,3 @@ MonoBehaviour:
   baseBonusFireDmg: 1
   haveWaterDmg: 1
   baseBonusWaterDmg: 1
-  gameGold: {fileID: 11400000, guid: 90f9be530f0d15342962d24b6236e843, type: 2}

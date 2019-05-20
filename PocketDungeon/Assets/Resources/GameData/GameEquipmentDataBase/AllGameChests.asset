@@ -20,8 +20,8 @@ MonoBehaviour:
   Common:
   - {fileID: 11400000, guid: 791a3edb2a0710e4db1c248fe1260b92, type: 2}
   Rare:
-  - {fileID: 11400000, guid: 572961abbf796014abce12cdfb613f9e, type: 2}
-  Epic:
   - {fileID: 11400000, guid: 514697ac831fe4f4d9ba025db812ef5f, type: 2}
-  Legendary:
+  Epic:
   - {fileID: 11400000, guid: 169c9a9c8df2a5e479a84c1b2c56db81, type: 2}
+  Legendary:
+  - {fileID: 11400000, guid: 572961abbf796014abce12cdfb613f9e, type: 2}

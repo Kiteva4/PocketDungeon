@@ -1,4 +1,8 @@
 ﻿using UnityEngine;
+using TMPro;
+using UnityEngine.UI;
+using System.Collections;
+using System.Collections.Generic;
 
 public class LootManager : MonoBehaviour
 {
@@ -23,12 +27,37 @@ public class LootManager : MonoBehaviour
         }
     }
 
+    private BoxController boxCreator;
+
+    [SerializeField] private GameObject UI_OpenBox;
+    //[SerializeField] private GameObject boxImage;
+    [SerializeField] private GameObject itemImageHolder;
+    [SerializeField] private GameObject boxGoldHolder;
+    [SerializeField] private ParticleSystem goldAddParticleSystem;
+    [SerializeField] private Animator itemImageAnimator;
+    [SerializeField] private Animator boxGoldAnimator;
+    //[SerializeField] private GameObject OpenNextBoxButton;
+    [SerializeField] private TextMeshProUGUI boxCountText;
+    [SerializeField] private Image itemImage;
+    [SerializeField] private float goldInBox;
+
+    private int _boxCount;
+    public int boxCount
+    {
+        get => _boxCount;
+        set
+        {
+            _boxCount = value;
+            boxCountText.text = _boxCount.ToString();
+        }
+    }
+
     private void InitCreators()
     {
-        weaponCreator = new InventoryItemCreator(allWeaponsData, PlayerEC.weaponSlot, SaveManager.save.inventoryData.weaponsData);
-        headCreator = new InventoryItemCreator(allHeadsData, PlayerEC.headSlot, SaveManager.save.inventoryData.headsData);
-        chestCreator = new InventoryItemCreator(allChestsData, PlayerEC.chestSlot, SaveManager.save.inventoryData.chestsData);
-        legCreator = new InventoryItemCreator(allLegsData, PlayerEC.legSlot, SaveManager.save.inventoryData.legsData);
+        weaponCreator = new InventoryItemCreator(allWeaponsData, PlayerEC.Slot[(int)ItemType.Weapon], SaveManager.save.inventoryData.weaponsData,  ItemType.Weapon);
+        headCreator =   new InventoryItemCreator(allHeadsData,   PlayerEC.Slot[(int)ItemType.Head],   SaveManager.save.inventoryData.headsData,    ItemType.Head);
+        chestCreator =  new InventoryItemCreator(allChestsData,  PlayerEC.Slot[(int)ItemType.Chest],  SaveManager.save.inventoryData.chestsData,   ItemType.Chest);
+        legCreator =    new InventoryItemCreator(allLegsData,    PlayerEC.Slot[(int)ItemType.Legs],    SaveManager.save.inventoryData.legsData,     ItemType.Legs);
     }
 
     #region Init equipments
@@ -56,6 +85,17 @@ public class LootManager : MonoBehaviour
         FindToEquip(SaveManager.save.inventoryData.headsData, allHeadsData);
         FindToEquip(SaveManager.save.inventoryData.chestsData, allChestsData);
         FindToEquip(SaveManager.save.inventoryData.legsData, allLegsData);
+    }
+
+    public void InitBoxController()
+    {
+        boxCreator = new BoxController();
+        boxCount = SaveManager.save.PlayerBoxes.Count;
+    }
+
+    public void InitBoxList()
+    {
+        SaveManager.save.PlayerBoxes = new List<Box>();
     }
 
     private void FindToEquip(InventoryItemsData save, GameEquipmentData dataBase)
@@ -86,55 +126,84 @@ public class LootManager : MonoBehaviour
     }
     #endregion
 
-
-    //TODO удалить
-    public void OnClickCreateWepon()
-    {
-        weaponCreator.AddRandomItem(2);
-        //Debug.Log("create weapon");
-    }
-
-    public void OnClickCreateHead()
-    {
-        headCreator.AddRandomItem(2);
-        //Debug.Log("create head");
-    }
-
-    public void OnClickCreateChest()
-    {
-        chestCreator.AddRandomItem(3);
-        //Debug.Log("create chest");
-    }
-
-    public void OnClickCreateLeg()
-    {
-        legCreator.AddNewCommonItem(1);
-        //Debug.Log("create leg");
-    }
-
     public void OnCreateRandomItem()
     {
+        Random.InitState((int)Time.time);
+
         int i = Random.Range(1, 4);
         switch (i)  
         {
             case 1:
-                weaponCreator.AddRandomItem(PlayerEC.weaponSlot.level);
-                Debug.Log("weaponCreator AddRandomItem");
+                boxCreator.AddBox(weaponCreator,SaveManager.save.bossRarity);
                 break;
             case 2:
-                headCreator.AddRandomItem(PlayerEC.headSlot.level);
-                Debug.Log("headCreator AddRandomItem");
+                boxCreator.AddBox(headCreator, SaveManager.save.bossRarity);
                 break;
             case 3:
-                chestCreator.AddRandomItem(PlayerEC.chestSlot.level);
-                Debug.Log("chestCreator AddRandomItem");
+                boxCreator.AddBox(legCreator, SaveManager.save.bossRarity);
                 break;
             case 4:
-                legCreator.AddNewCommonItem(PlayerEC.legSlot.level);
-                Debug.Log("legCreator AddRandomItem");
+                boxCreator.AddBox(chestCreator, SaveManager.save.bossRarity);
                 break;
             default:
                 break;
         }
+    }
+
+    public void HandlerOnClickOpenBox()
+    {
+        if(SaveManager.save.PlayerBoxes.Count!=0)
+            OnClickOpenBox();
+    }
+
+    private void OnClickOpenBox()
+    {
+        itemImage.sprite = boxCreator.GetItemSprite();
+        goldInBox = boxCreator.GetBoxGoldCount();
+
+        if(!UI_OpenBox.activeInHierarchy)
+            UI_OpenBox.SetActive(true);
+
+        boxCreator.AddItemToInventory();
+        StartCoroutine(ShowItemImage());
+    }
+
+    IEnumerator ShowItemImage()
+    {
+        itemImageHolder.SetActive(true);
+        goldAddParticleSystem.gameObject.SetActive(false);
+
+        itemImageAnimator.SetTrigger("Show");
+        yield return new WaitForSeconds(1.2f);
+#if UNITY_EDITOR
+        yield return new WaitUntil(() => Input.anyKeyDown);
+#else
+        yield return new WaitUntil(() => Input.touchCount != 0);
+#endif
+        itemImageAnimator.SetTrigger("Hide");
+        StartCoroutine(ShowGoldCountFromBox());
+        yield return new WaitForSeconds(0.7f);
+        itemImageHolder.SetActive(false);
+    }
+
+    IEnumerator ShowGoldCountFromBox()
+    {
+        boxGoldHolder.SetActive(true);
+        boxGoldAnimator.SetTrigger("Show");
+        yield return new WaitForSeconds(0.7f);
+#if UNITY_EDITOR
+        yield return new WaitUntil(() => Input.anyKeyDown);
+#else
+        yield return new WaitUntil(() => Input.touchCount != 0);
+#endif
+        boxGoldAnimator.SetTrigger("Hide");
+        yield return new WaitForSeconds(0.6f);
+        boxGoldHolder.SetActive(false);
+        goldAddParticleSystem.gameObject.SetActive(true);
+        yield return new WaitForSeconds(1.5f);
+        if (SaveManager.save.PlayerBoxes.Count != 0)
+            OnClickOpenBox();
+        else
+            UI_OpenBox.SetActive(false);
     }
 }

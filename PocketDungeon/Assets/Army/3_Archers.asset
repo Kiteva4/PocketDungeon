@@ -16,6 +16,5 @@ MonoBehaviour:
   unitName: 3_Archers
   count: 0
   baseUpgradeCost: 500
-  baseDamage: 4
+  baseDamage: 40
   multipler: 1.15
-  gameGold: {fileID: 11400000, guid: 90f9be530f0d15342962d24b6236e843, type: 2}

@@ -66,6 +66,7 @@ public class InventoryElement : MonoBehaviour
     [SerializeField] protected GameObject equipButton;
     [SerializeField] protected GameObject upgradeButton;
     [SerializeField] protected GameObject sellButton;
+    [SerializeField] protected GameObject[] itemRarityImages;
     [SerializeField] protected Image itemImg;
     #endregion
 
@@ -89,15 +90,27 @@ public class InventoryElement : MonoBehaviour
         this.inventoryItem = inventoryItem;
         IsEquiped = this.inventoryItem.isEquipped;
 
-        itemName.text = equipment.itemName;
+        itemName.text = equipment.ItemName;
         itemImg.sprite = equipment.ItemIcon;
+
+        SetItemRarityBackground(equipment);
 
         if (IsEquiped == true) inventorySelector.SelectInventoryElement(this); //EquipThisItem();
 
         UpgradeDesk();
     }
 
-    //скрывает кнопки и записывает в changeEquippedEvent (см выше на одну строчку) ссылку на метод, который включает 
+    private void SetItemRarityBackground(Equipment equipment)
+    {
+        foreach (var item in itemRarityImages)
+        {
+            item.SetActive(false);
+        }
+
+        itemRarityImages[(int)equipment.Rarity - 1].SetActive(true);
+    }
+
+    //скрывает кнопки и записывает в changeEquippedEvent ссылку на метод, который включает 
     //отображения кнопок данного класса
     public void EquipThisItem()
     {
@@ -118,12 +131,14 @@ public class InventoryElement : MonoBehaviour
     {
         sellButton.SetActive(true);
         equipButton.SetActive(true);
+        upgradeButton.SetActive(false);
     }
 
     private void HideButtonsOnEquippedElement()
     {
         sellButton.SetActive(false);
         equipButton.SetActive(false);
+        upgradeButton.SetActive(true);
     }
 
     /// <summary>

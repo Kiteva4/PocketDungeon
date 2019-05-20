@@ -33,7 +33,7 @@ public class ArmyManager : MonoBehaviour
 
     private IEnumerator TickDamage(Army army, ArmyUnit unit)
     {
-        Debug.Log($"Init curatine {army} with count {unit.unitCount}");
+        //Debug.Log($"Init curatine {army} with count {unit.unitCount}");
         while(true)
         {
             bossHealthController.OnArmyDamageTick(army.GetDamage(unit.unitCount));

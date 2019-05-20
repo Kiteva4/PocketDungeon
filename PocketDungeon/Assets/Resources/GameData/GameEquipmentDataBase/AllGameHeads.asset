@@ -18,10 +18,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: f650ff01790f0bf44bc0b49be5ac9de5, type: 2}
   - {fileID: 11400000, guid: 7eb5f27dc426f2a4186f1e14dfcfa31c, type: 2}
   Common:
-  - {fileID: 11400000, guid: 7eb5f27dc426f2a4186f1e14dfcfa31c, type: 2}
-  Rare:
   - {fileID: 11400000, guid: 6ccfb92cb2e7a1d46830cafc798b4afb, type: 2}
-  Epic:
+  Rare:
   - {fileID: 11400000, guid: 1ff3e163504b42148aed34ea7396e750, type: 2}
-  Legendary:
+  Epic:
   - {fileID: 11400000, guid: f650ff01790f0bf44bc0b49be5ac9de5, type: 2}
+  Legendary:
+  - {fileID: 11400000, guid: 7eb5f27dc426f2a4186f1e14dfcfa31c, type: 2}

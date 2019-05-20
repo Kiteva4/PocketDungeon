@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 [Serializable]
 public class SaveData
@@ -10,7 +11,7 @@ public class SaveData
     public int bossLevel;
     public Rarity bossRarity;
 
-    
+    public List<Box> PlayerBoxes;
 
     //todo
     //public SpellProgressData spellProgressData;

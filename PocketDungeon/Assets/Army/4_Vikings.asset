@@ -16,6 +16,5 @@ MonoBehaviour:
   unitName: 4_Vikings
   count: 0
   baseUpgradeCost: 3000
-  baseDamage: 10
+  baseDamage: 100
   multipler: 1.15
-  gameGold: {fileID: 11400000, guid: 90f9be530f0d15342962d24b6236e843, type: 2}

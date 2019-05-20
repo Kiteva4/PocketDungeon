@@ -1,0 +1,520 @@
+fileFormatVersion: 2
+guid: 25ab4a5069864e8419b1bc361033d062
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -5925229835830997934
+    second: UI_Cross
+  - first:
+      213: 4694739717030741570
+    second: UI_gem_top_view
+  - first:
+      213: -1306238181314700429
+    second: UI_gem_front_view
+  - first:
+      213: -8251839849593730772
+    second: UI_frame_inventory
+  - first:
+      213: 5844817787834689882
+    second: UI_Rare_item
+  - first:
+      213: 5253379544356439423
+    second: UI_Common_item
+  - first:
+      213: 7375136855559568395
+    second: UI_Epic_item
+  - first:
+      213: 5441291388582999994
+    second: UI_gem_top_shadow
+  - first:
+      213: 2028561788155765961
+    second: UI_gem_front_shadow
+  - first:
+      213: 654140488982541679
+    second: UI_button
+  - first:
+      213: 3511896192921355054
+    second: UI_large_button
+  - first:
+      213: -6855462259827900155
+    second: UI_frame_item
+  - first:
+      213: -4566256959896401723
+    second: UI_Legendary_item
+  - first:
+      213: -8355204623007767877
+    second: UI_item_level_bg_flag
+  - first:
+      213: -1042448659406118325
+    second: UI_Star
+  - first:
+      213: 6539211023736775550
+    second: UI_Select_button
+  - first:
+      213: 3273154373333367180
+    second: UI_close_button
+  externalObjects: {}
+  serializedVersion: 10
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 0
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 2
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: UI_Cross
+      rect:
+        serializedVersion: 2
+        x: 901
+        y: 1152
+        width: 885
+        height: 885
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 32c88e3718daa0845b97e413054cac74
+      internalID: -5925229835830997934
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_gem_top_view
+      rect:
+        serializedVersion: 2
+        x: 1791
+        y: 1805
+        width: 253
+        height: 219
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 636288967535afa4a965e80dd0671db9
+      internalID: 4694739717030741570
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_gem_front_view
+      rect:
+        serializedVersion: 2
+        x: 1806
+        y: 1578
+        width: 224
+        height: 196
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: de8b7f69dc398ce48ae0dc12f12d2ea2
+      internalID: -1306238181314700429
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_frame_inventory
+      rect:
+        serializedVersion: 2
+        x: 24
+        y: 1254
+        width: 874
+        height: 770
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9a29b14062eba55429bdfffdcfc7a687
+      internalID: -8251839849593730772
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Rare_item
+      rect:
+        serializedVersion: 2
+        x: 1840
+        y: 1276
+        width: 206
+        height: 206
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3724acf5eb9c66846ac0d87f73ea29db
+      internalID: 5844817787834689882
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Common_item
+      rect:
+        serializedVersion: 2
+        x: 1840
+        y: 1062
+        width: 206
+        height: 205
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 84631e5f2b20afa47925932ae00e2b8b
+      internalID: 5253379544356439423
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Epic_item
+      rect:
+        serializedVersion: 2
+        x: 1840
+        y: 829
+        width: 206
+        height: 205
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 889715150a519174896d71083a78a75b
+      internalID: 7375136855559568395
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_gem_top_shadow
+      rect:
+        serializedVersion: 2
+        x: 1196
+        y: 628
+        width: 275
+        height: 254
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1a6f584f6bdfc18499bbe37741287f8e
+      internalID: 5441291388582999994
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_gem_front_shadow
+      rect:
+        serializedVersion: 2
+        x: 1483
+        y: 632
+        width: 261
+        height: 248
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cffed7de1b254dc428f4ad8f57c658a1
+      internalID: 2028561788155765961
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_button
+      rect:
+        serializedVersion: 2
+        x: 1194
+        y: 349
+        width: 272
+        height: 230
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ba35db04351ebd447b114b2b40c753a3
+      internalID: 654140488982541679
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_large_button
+      rect:
+        serializedVersion: 2
+        x: 1496
+        y: 339
+        width: 542
+        height: 230
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ed29fa6a64081324cbcbe729544645c9
+      internalID: 3511896192921355054
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_frame_item
+      rect:
+        serializedVersion: 2
+        x: 945
+        y: 12
+        width: 1089
+        height: 310
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 22fe6312c118d87488934c323616dc8b
+      internalID: -6855462259827900155
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Legendary_item
+      rect:
+        serializedVersion: 2
+        x: 1843
+        y: 620
+        width: 202
+        height: 203
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 700fdf859683b394abd3b8db5f9f88f4
+      internalID: -4566256959896401723
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_item_level_bg_flag
+      rect:
+        serializedVersion: 2
+        x: 612
+        y: 4
+        width: 245
+        height: 316
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 16455f278adcf9b4d8e6b4e4c67119e0
+      internalID: -8355204623007767877
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Star
+      rect:
+        serializedVersion: 2
+        x: 883
+        y: 634
+        width: 252
+        height: 255
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7960f8e8eb02e9046943d5e865645b94
+      internalID: -1042448659406118325
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Select_button
+      rect:
+        serializedVersion: 2
+        x: 892
+        y: 360
+        width: 232
+        height: 226
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 95d59aeef730e9f46ba585d613ebe99c
+      internalID: 6539211023736775550
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_close_button
+      rect:
+        serializedVersion: 2
+        x: 604
+        y: 362
+        width: 229
+        height: 222
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c3d4be7371d9b694197e8df3d1e51ae8
+      internalID: 3273154373333367180
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 3104b1eed06c91f4c89965760ad047fe
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

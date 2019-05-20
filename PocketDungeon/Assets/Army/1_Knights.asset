@@ -16,5 +16,5 @@ MonoBehaviour:
   unitName: 1_Knights
   count: 0
   baseUpgradeCost: 15
-  baseDamage: 0.1
+  baseDamage: 1
   multipler: 1.15
